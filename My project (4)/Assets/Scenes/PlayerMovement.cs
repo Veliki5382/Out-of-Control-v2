@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 	Vector2 orientation;
 	Rigidbody2D rb;
 	public float moveSpeed;
+	public GameObject kita;
 
 	void Start()
 	{
@@ -23,5 +24,8 @@ public class PlayerMovement : MonoBehaviour
 	private void FixedUpdate()
 	{
 		rb.velocity = new Vector2(orientation.x * moveSpeed, orientation.y * moveSpeed);
+		Quaternion rotation = Quaternion.identity;
+		rotation.eulerAngles = new Vector3(0.0f, 0.0f, orientation.x * 90 + orientation.y * 90);
+		kita.transform.rotation = rotation;
 	}
 }
