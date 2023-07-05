@@ -15,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
 
 	void Update()
 	{
-		float moveX = Input.GetAxisRaw("Horizontal");
-		float moveY = Input.GetAxisRaw("Vertical");
+		float moveX = Input.GetAxis("Horizontal");
+		float moveY = Input.GetAxis("Vertical");
 		orientation = new Vector2(moveX, moveY).normalized;
 	}
 
