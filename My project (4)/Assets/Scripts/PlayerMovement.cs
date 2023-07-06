@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
 	public GameObject camera;
 	public float delayFactor;
 	public Animator animator;
+	bool right;
 
 	void Start()
 	{
@@ -24,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
 		transform.position = Vector3.zero;
 		gunOffset = new Vector3(0.1f, 0.1f, -2f);
 		bulletSpawnerOffset = new Vector3(0.6f, 0.09f, -4f);
+		right = true;
 	}
 
 	void Update()
@@ -32,8 +34,11 @@ public class PlayerMovement : MonoBehaviour
 		float moveY = Input.GetAxisRaw("Vertical");
 		orientation = new Vector2(moveX, moveY).normalized;
         animator.SetBool("isMoving", moveX != 0 || moveY != 0);
+		
+		if (moveX < 0) right = false;
+		if (moveX > 0) right = true;
 
-		if(moveX < 0)
+		if(right == false)
 		{
 			transform.rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f));
 		}

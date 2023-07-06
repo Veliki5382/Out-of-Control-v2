@@ -18,15 +18,15 @@ public class BulletBehaviour : MonoBehaviour
         if(PlayerMovement.deltaX < 0)
 		{
             rb.velocity = new Vector2(-bulletSpeed * Mathf.Cos(angle), bulletSpeed * Mathf.Sin(angle));
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle * 180 / Mathf.PI));
 		}
 		else
 		{
             rb.velocity = new Vector2(bulletSpeed * Mathf.Cos(angle), bulletSpeed * Mathf.Sin(angle));
-            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle * 180 / Mathf.PI));
         }
     }
-
+    
     // Update is called once per frame
     void Update()
     {
