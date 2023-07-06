@@ -526,6 +526,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 1885428193964223064, guid: 2fcb18e1e657b864e8612d2cd183c731, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 5513ce9a24bd93048b9dbdab2c9bd5ef, type: 2}
+    - target: {fileID: 4125485374459660583, guid: 2fcb18e1e657b864e8612d2cd183c731, type: 3}
+      propertyPath: m_Size.x
+      value: 0.640625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125485374459660583, guid: 2fcb18e1e657b864e8612d2cd183c731, type: 3}
+      propertyPath: m_Size.y
+      value: 0.90625
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125485374459660583, guid: 2fcb18e1e657b864e8612d2cd183c731, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -496741050, guid: aaee91d244be7354684427975442e25f, type: 3}
+    - target: {fileID: 4125485374459660583, guid: 2fcb18e1e657b864e8612d2cd183c731, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4125485374459660583, guid: 2fcb18e1e657b864e8612d2cd183c731, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8133722656336729746, guid: 2fcb18e1e657b864e8612d2cd183c731, type: 3}
       propertyPath: gun
       value: 
