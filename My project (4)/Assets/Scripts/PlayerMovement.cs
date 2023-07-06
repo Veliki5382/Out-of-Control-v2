@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 	static public float rotationAngle;
-	static public float deltaX, deltaY;
 	
 	Vector2 orientation;
 	Rigidbody2D rb;
@@ -16,8 +15,8 @@ public class PlayerMovement : MonoBehaviour
 	public Vector3 bulletSpawnerOffset;
 	public GameObject camera;
 	public float delayFactor;
+	float deltaX, deltaY;
 	public Animator animator;
-	bool right;
 
 	void Start()
 	{
@@ -25,39 +24,24 @@ public class PlayerMovement : MonoBehaviour
 		transform.position = Vector3.zero;
 		gunOffset = new Vector3(0.1f, 0.1f, -2f);
 		bulletSpawnerOffset = new Vector3(0.6f, 0.09f, -4f);
-		right = true;
 	}
 
 	void Update()
 	{
-		float moveX = Input.GetAxisRaw("Horizontal");
-		float moveY = Input.GetAxisRaw("Vertical");
+		float moveX = Input.GetAxis("Horizontal");
+		float moveY = Input.GetAxis("Vertical");
 		orientation = new Vector2(moveX, moveY).normalized;
         animator.SetBool("isMoving", moveX != 0 || moveY != 0);
-		
-		if (moveX < 0) right = false;
-		if (moveX > 0) right = true;
-
-		if(right == false)
-		{
-			transform.rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, 0.0f));
-		}
-		else
-		{
-			transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, 0.0f));
-		}
 
         gun.transform.position = transform.position + gunOffset;
 		if (deltaX < 0)
 		{
-
 			float finalX = bulletSpawnerOffset.x * Mathf.Cos(rotationAngle) + bulletSpawnerOffset.y * Mathf.Sin(rotationAngle);
 			float finalY = bulletSpawnerOffset.x * Mathf.Sin(rotationAngle) - bulletSpawnerOffset.y * Mathf.Cos(rotationAngle);
 			bulletSpawner.transform.position = gun.transform.position + new Vector3(-finalX, finalY, bulletSpawnerOffset.z);
 		}
 		else
 		{
-
 			float finalX = bulletSpawnerOffset.x * Mathf.Cos(rotationAngle) + bulletSpawnerOffset.y * Mathf.Sin(rotationAngle);
 			float finalY = bulletSpawnerOffset.x * Mathf.Sin(rotationAngle) - bulletSpawnerOffset.y * Mathf.Cos(rotationAngle);
 			bulletSpawner.transform.position = gun.transform.position + new Vector3(finalX, finalY, bulletSpawnerOffset.z);
