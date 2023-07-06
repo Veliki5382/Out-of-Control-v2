@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class camerafollow : MonoBehaviour
 {
-    public Camera camera;
     public Transform target;
     private Vector3 velocity;
     public float smooth;
