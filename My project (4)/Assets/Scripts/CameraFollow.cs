@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class camerafollow : MonoBehaviour
 {
+    public Camera camera;
     public Transform target;
     private Vector3 velocity;
     public float smooth;
@@ -19,6 +20,6 @@ public class camerafollow : MonoBehaviour
     void LateUpdate()
     {
         transform.position = Vector3.SmoothDamp(transform.position, target.position + cameraOffset, ref velocity, smooth);
-
+        //GetComponent<Camera>().orthographicSize = 3;
     }
 }

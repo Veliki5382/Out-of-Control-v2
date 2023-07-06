@@ -7,7 +7,10 @@ public class PlayerMovement : MonoBehaviour
 	Vector2 orientation;
 	Rigidbody2D rb;
 	public float moveSpeed;
-	public GameObject kita;
+	public GameObject gun;
+	float rotationAngle;
+	public Vector3 gunOffset;
+	public GameObject camera;
 
 	void Start()
 	{
@@ -24,8 +27,20 @@ public class PlayerMovement : MonoBehaviour
 	private void FixedUpdate()
 	{
 		rb.velocity = new Vector2(orientation.x * moveSpeed, orientation.y * moveSpeed);
-		Quaternion rotation = Quaternion.identity;
-		rotation.eulerAngles = new Vector3(0.0f, 0.0f, orientation.x * 90 + orientation.y * 90);
-		kita.transform.rotation = rotation;
+		gun.transform.position = transform.position + gunOffset;
+
+		float deltaY = Input.mousePosition.y - transform.position.y - Screen.height / 2;
+		float deltaX = Input.mousePosition.x - transform.position.x - Screen.width / 2;
+		if (deltaX < 0)
+		{
+			rotationAngle = Mathf.Atan2(deltaY, -deltaX) * 180 / Mathf.PI;
+			gun.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 180.0f, rotationAngle));
+		}
+		else
+		{
+			rotationAngle = Mathf.Atan2(deltaY, deltaX) * 180 / Mathf.PI;
+			gun.transform.rotation = Quaternion.Euler(new Vector3(0.0f, 0.0f, rotationAngle));
+		}
+		Debug.DrawLine(Input.mousePosition +camera.transform.position, camera.transform.position, Color.red, 2, false);
 	}
 }
