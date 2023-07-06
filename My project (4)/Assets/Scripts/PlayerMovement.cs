@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
 	public GameObject camera;
 	public float delayFactor;
 	float deltaX, deltaY;
+	public Animator animator;
 
 	void Start()
 	{
@@ -30,8 +31,9 @@ public class PlayerMovement : MonoBehaviour
 		float moveX = Input.GetAxis("Horizontal");
 		float moveY = Input.GetAxis("Vertical");
 		orientation = new Vector2(moveX, moveY).normalized;
-		
-		gun.transform.position = transform.position + gunOffset;
+        animator.SetBool("isMoving", moveX != 0 || moveY != 0);
+
+        gun.transform.position = transform.position + gunOffset;
 		if (deltaX < 0)
 		{
 			float finalX = bulletSpawnerOffset.x * Mathf.Cos(rotationAngle) + bulletSpawnerOffset.y * Mathf.Sin(rotationAngle);
@@ -44,6 +46,8 @@ public class PlayerMovement : MonoBehaviour
 			float finalY = bulletSpawnerOffset.x * Mathf.Sin(rotationAngle) - bulletSpawnerOffset.y * Mathf.Cos(rotationAngle);
 			bulletSpawner.transform.position = gun.transform.position + new Vector3(finalX, finalY, bulletSpawnerOffset.z);
 		}
+
+		
 		
 	}
 
