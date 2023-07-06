@@ -14,7 +14,17 @@ public class BulletBehaviour : MonoBehaviour
     {
         bornTime = Time.time;
         rb = GetComponent<Rigidbody2D>();
-        rb.velocity = new Vector2(bulletSpeed * Mathf.Cos(PlayerMovement.rotationAngle), bulletSpeed * Mathf.Sin(PlayerMovement.rotationAngle));
+        float angle = PlayerMovement.rotationAngle;
+        if(PlayerMovement.deltaX < 0)
+		{
+            rb.velocity = new Vector2(-bulletSpeed * Mathf.Cos(angle), bulletSpeed * Mathf.Sin(angle));
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, -angle));
+		}
+		else
+		{
+            rb.velocity = new Vector2(bulletSpeed * Mathf.Cos(angle), bulletSpeed * Mathf.Sin(angle));
+            transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        }
     }
 
     // Update is called once per frame
