@@ -248,6 +248,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 84656087314827568, guid: 2fcb18e1e657b864e8612d2cd183c731, type: 3}
   m_PrefabInstance: {fileID: 7732695584034283621}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &1432144564 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1885428193964223064, guid: 2fcb18e1e657b864e8612d2cd183c731, type: 3}
+  m_PrefabInstance: {fileID: 7732695584034283621}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1614690988
 GameObject:
   m_ObjectHideFlags: 0
@@ -558,6 +563,10 @@ PrefabInstance:
       propertyPath: camera
       value: 
       objectReference: {fileID: 310032972}
+    - target: {fileID: 8133722656336729746, guid: 2fcb18e1e657b864e8612d2cd183c731, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1432144564}
     - target: {fileID: 8133722656336729746, guid: 2fcb18e1e657b864e8612d2cd183c731, type: 3}
       propertyPath: bulletSpawner
       value: 
